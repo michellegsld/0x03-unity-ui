@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,8 +25,12 @@ public class PlayerController : MonoBehaviour
 
         if (health == 0)
         {
-            Debug.Log("Game Over!");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //Debug.Log("Game Over!");
+            winloseBG.color = Color.red;
+            winloseText.color = Color.white;
+            winloseText.text = "Game Over!";
+            winloseBG.gameObject.SetActive(true);
+            StartCoroutine(LoadScene(3));
         }
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
@@ -53,7 +58,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Waits a couple seconds before reloading the scene
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
     // Increment the value of score when the Player touches the Pickup tag
+    // Decrement the value of health when the Player touches the Trap tag
+    // Ends the game when the Player touches the Goal tag
     void OnTriggerEnter(Collider other)
     {
         string tag = other.gameObject.tag;
@@ -78,14 +92,17 @@ public class PlayerController : MonoBehaviour
             winloseText.color = Color.black;
             winloseText.text = "You Win!";
             winloseBG.gameObject.SetActive(true);
+            StartCoroutine(LoadScene(3));
         }
     }
 
+    // Updates the score text UI
     void SetScoreText()
     {
         scoreText.text = "Score: " + score.ToString();
     }
 
+    // Updates the heath text UI
     void SetHealthText()
     {
         healthText.text = "Health: " + health.ToString();
