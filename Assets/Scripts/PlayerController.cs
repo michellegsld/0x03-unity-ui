@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
             Vector3 position = this.transform.position;
             position.x += speed;
             this.transform.position = position;
+        }
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
         }
     }
 
