@@ -6,10 +6,15 @@ public class MainMenu : MonoBehaviour
 {
     public Button playButton;
     public Button quitButton;
+
     public Button optionsButton;
     public Button backButton;
     public GameObject mainMenu;
     public GameObject optionsMenu;
+
+    public Material trapMat;
+    public Material goalMat;
+    public Toggle colorblindMode;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,11 @@ public class MainMenu : MonoBehaviour
     // Loads the maze scene when the Play button is pressed
     public void PlayMaze()
     {
+        if(colorblindMode.isOn)
+        {
+            trapMat.color = new Color32(255, 112, 0, 1);
+            goalMat.color = Color.blue;
+        }
         SceneManager.LoadScene("maze");
     }
 
@@ -50,4 +60,5 @@ public class MainMenu : MonoBehaviour
         optionsMenu.gameObject.SetActive(false);
         mainMenu.gameObject.SetActive(true);
     }
+
 }
