@@ -58,13 +58,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Waits a couple seconds before reloading the scene
-    IEnumerator LoadScene(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     // Increment the value of score when the Player touches the Pickup tag
     // Decrement the value of health when the Player touches the Trap tag
     // Ends the game when the Player touches the Goal tag
@@ -106,5 +99,12 @@ public class PlayerController : MonoBehaviour
     void SetHealthText()
     {
         healthText.text = "Health: " + health.ToString();
+    }
+
+    // Waits a couple seconds before reloading the scene
+    IEnumerator LoadScene(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
