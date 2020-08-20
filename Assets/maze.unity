@@ -2685,6 +2685,8 @@ MonoBehaviour:
   health: 5
   scoreText: {fileID: 1556179108}
   healthText: {fileID: 443434625}
+  winloseBG: {fileID: 1919089646}
+  winloseText: {fileID: 1662929357}
 --- !u!54 &433553048
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7570,7 +7572,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sdfafds
+  m_Text: 
 --- !u!222 &1662929358
 CanvasRenderer:
   m_ObjectHideFlags: 0
